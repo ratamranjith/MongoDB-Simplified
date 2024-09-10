@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyparser = require('body-parser')
 const exhbs = require('express-handlebars')
+require('dotenv').config();
 const { dbo, ObjectId } = require('./db');
 const path = require('path')
 const app = express()
@@ -106,8 +107,9 @@ app.post('/delete_book/:delete_book_id', async (req, res) => {
 })
 
 
+const PORT = process.env.PORT || 3000;
 
-app.listen(4000, () => {
+app.listen(PORT, () => {
     console.log('Listening to Ports');
 
 })
