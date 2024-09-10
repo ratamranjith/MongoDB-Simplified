@@ -4,38 +4,89 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MongoDb-CRUD Example</title>
+    <link rel="stylesheet" href="/styles.css" />
 </head>
-<body>
-    <h1>MOngoDB</h1>
-    {{message}}
-{{#if edit_book_id}}
-<div class ='update'>
-        <form action="/update_book/{{edit_book_id}}" method="post" >
-        <input type="text" placeholder="bookname" name="title" value="{{edit_book.title}}" />
-        <br/>
-        <input type="text" placeholder="author" name="author" value="{{edit_book.author}}" />
-        <br/>
-        <input type="text" placeholder="Year" name="year" value="{{edit_book.year}}"/>
-        <button type="submit">Update</button>
-    </form>
-</div>
-<br/>
-{{else}}
-<div class='add'>
-    <form action="\addBook" method="post" >
-        <input type="text" placeholder="bookname" name="title" />
-        <br/>
-        <input type="text" placeholder="author" name="author" />
-        <br/>
-        <input type="text" placeholder="Year" name="year" />
-        <button type="submit">Add</button>
-    </form>
-</div>
-{{/if}}
-    <ul>
-        {{#each books}}
-        <li>{{this.title}} - {{this.author}} - {{this.year}} : <a href="\?edit_book_id={{this._id}}">Edit Book</a> &nbsp; &nbsp; <a href="\?delete_book_id={{this._id}}">Delete Book</a></li>
-        {{/each}}
-    </ul>
+<body class="bg-gray-100">
+    <div class="container mx-auto py-8">
+        <h1 class="text-3xl font-bold mb-6 text-center">MongoDB CRUD Example</h1>
+
+        <!-- Toast Notification -->
+        {{#if message}}
+        <div id="toast" class="fixed top-4 right-4 py-3 px-6 text-white rounded shadow-lg
+            {{#if (eq message.type 'add')}}bg-green-500{{/if}}
+            {{#if (eq message.type 'update')}}bg-blue-500{{/if}}
+            {{#if (eq message.type 'delete')}}bg-red-500{{/if}}">
+            {{message.text}}
+        </div>
+        {{/if}}
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Form Section -->
+            <div class="p-6 bg-white rounded shadow-md">
+                {{#if edit_book_id}}
+                <h2 class="text-2xl font-semibold mb-4">Edit Book</h2>
+                <form action="/update_book/{{edit_book_id}}" method="post">
+                    <input type="text" name="title" value="{{edit_book.title}}" placeholder="Book Name" class="w-full mb-4 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-indigo-600" />
+                    <input type="text" name="author" value="{{edit_book.author}}" placeholder="Author" class="w-full mb-4 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-indigo-600" />
+                    <input type="text" name="year" value="{{edit_book.year}}" placeholder="Year" class="w-full mb-4 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-indigo-600" />
+                    <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">Update</button>
+                </form>
+                {{else}}
+                <h2 class="text-2xl font-semibold mb-4">Add Book</h2>
+                <form action="/addBook" method="post">
+                    <input type="text" name="title" placeholder="Book Name" class="w-full mb-4 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-indigo-600" />
+                    <input type="text" name="author" placeholder="Author" class="w-full mb-4 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-indigo-600" />
+                    <input type="text" name="year" placeholder="Year" class="w-full mb-4 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-indigo-600" />
+                    <button type="submit" class="w-full bg-green-500 text-white p-2 rounded hover:bg-green-600">Add</button>
+                </form>
+                {{/if}}
+            </div>
+
+            <!-- Book List Section -->
+            <div class="p-6 bg-white rounded shadow-md">
+                <h2 class="text-2xl font-semibold mb-4">Book List</h2>
+                <table class="min-w-full border-collapse border border-gray-300">
+                    <thead>
+                        <tr class="bg-gray-200">
+                            <th class="border border-gray-300 p-2 text-left">Title</th>
+                            <th class="border border-gray-300 p-2 text-left">Author</th>
+                            <th class="border border-gray-300 p-2 text-left">Year</th>
+                            <th class="border border-gray-300 p-2">Edit</th>
+                            <th class="border border-gray-300 p-2">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each books}}
+                        <tr>
+                            <td class="border border-gray-300 p-2">{{this.title}}</td>
+                            <td class="border border-gray-300 p-2">{{this.author}}</td>
+                            <td class="border border-gray-300 p-2">{{this.year}}</td>
+                            <td class="border border-gray-300 p-2 text-center">
+                                <a href="?edit_book_id={{this._id}}" class="bg-yellow-500 text-white py-1 px-3 rounded hover:bg-yellow-600">Edit</a>
+                            </td>
+                            <td class="border border-gray-300 p-2 text-center">
+                                <a href="?delete_book_id={{this._id}}" class="bg-red-500 text-white py-1 px-3 rounded hover:bg-red-600">Delete</a>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+      // Hide toast after 3 seconds or on click
+      setTimeout(function() {
+        const toast = document.getElementById('toast');
+        if (toast) {
+          toast.style.display = 'none';
+        }
+      }, 3000);
+
+      document.getElementById('toast')?.addEventListener('click', function() {
+        this.style.display = 'none';
+      });
+    </script>
 </body>
 </html>

@@ -2,15 +2,22 @@ const express = require('express')
 const bodyparser = require('body-parser')
 const exhbs = require('express-handlebars')
 const { dbo, ObjectId } = require('./db');
+const path = require('path')
 const app = express()
 
-app.engine('hbs', exhbs.engine({ layoutsDir: 'views/', defaultLayout: 'main', extname: 'hbs' }))
+app.engine('hbs', exhbs.engine({
+    layoutsDir: 'views/', defaultLayout: 'main', extname: 'hbs', helpers: {
+        eq: function (a, b) {
+            return a === b;
+        }
+    }
+}))
 app.set('view engine', 'hbs')
 app.set('views', 'views')
 app.use(bodyparser.urlencoded({
     extended: false
 }))
-
+app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', async (req, res) => {
     let message = "";
     let edit_book_id, edit_book;
@@ -33,13 +40,16 @@ app.get('/', async (req, res) => {
 
     switch (req.query.status) {
         case '1':
-            message = "Books added successfully";
+            message = { text: "Book added successfully!", type: "add" };
             break;
         case '2':
-            message = "Books updated successfully";
+            message = { text: "Book updated successfully!", type: "update" };
             break;
         case '3':
-            message = "Books Deleted successfully";
+            message = { text: "Book Deleted successfully!", type: "delete" };
+            break;
+        case 'error':
+            message = { text: "An error occurred!", type: "error" };
             break;
     }
 
