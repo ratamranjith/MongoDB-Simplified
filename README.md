@@ -646,3 +646,8 @@ Choosing the correct shard key is critical to balancing data distribution and qu
 #### MongoDB in Modern Application Development
 
 - MongoDB is a critical component in modern, scalable, cloud-native application development. It provides flexibility, scalability, and performance for both small and large-scale applications.
+
+#### Projects
+
+- **CRUD Project:** A simple CRUD application using MongoDB, Node.js and TailwindCss.
+  ![CRUD Image](public/images/CRUD.jpg)
