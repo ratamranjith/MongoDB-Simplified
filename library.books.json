@@ -1,0 +1,90 @@
+[{
+  "_id": {
+    "$oid": "66e09078cbf5e784543bb6df"
+  },
+  "title": "Introduction to Algorithms",
+  "author": "Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein",
+  "year": 2009,
+  "price": "INR-7200"
+},
+{
+  "_id": {
+    "$oid": "66e09078cbf5e784543bb6e0"
+  },
+  "title": "Clean Code: A Handbook of Agile Software Craftsmanship",
+  "author": "Robert C. Martin",
+  "year": 2008,
+  "price": "INR-4500"
+},
+{
+  "_id": {
+    "$oid": "66e09078cbf5e784543bb6e1"
+  },
+  "title": "The Pragmatic Programmer",
+  "author": "Andrew Hunt, David Thomas",
+  "year": 1999,
+  "price": "INR-4000"
+},
+{
+  "_id": {
+    "$oid": "66e09078cbf5e784543bb6e2"
+  },
+  "title": "Design Patterns: Elements of Reusable Object-Oriented Software",
+  "author": "Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides",
+  "year": 1994,
+  "price": "INR-5000"
+},
+{
+  "_id": {
+    "$oid": "66e09078cbf5e784543bb6e3"
+  },
+  "title": "The Mythical Man-Month: Essays on Software Engineering",
+  "author": "Frederick P. Brooks Jr.",
+  "year": 1975,
+  "price": "INR-3500"
+},
+{
+  "_id": {
+    "$oid": "66e09078cbf5e784543bb6e4"
+  },
+  "title": "You Don't Know JS: Scope & Closures",
+  "author": "Kyle Simpson",
+  "year": 2014,
+  "price": "INR-1200"
+},
+{
+  "_id": {
+    "$oid": "66e09078cbf5e784543bb6e5"
+  },
+  "title": "JavaScript: The Good Parts",
+  "author": "Douglas Crockford",
+  "year": 2008,
+  "price": "INR-2500"
+},
+{
+  "_id": {
+    "$oid": "66e09078cbf5e784543bb6e6"
+  },
+  "title": "Effective Java",
+  "author": "Joshua Bloch",
+  "year": 2008,
+  "price": "INR-3800"
+},
+{
+  "_id": {
+    "$oid": "66e09078cbf5e784543bb6e7"
+  },
+  "title": "Code Complete",
+  "author": "Steve McConnell",
+  "year": 2004,
+  "price": "INR-6200"
+},
+{
+  "_id": {
+    "$oid": "66e09078cbf5e784543bb6e8"
+  },
+  "title": "The Clean Coder: A Code of Conduct for Professional Programmers",
+  "author": "Robert C. Martin",
+  "year": 2011,
+  "price": "INR-4100"
+}]
