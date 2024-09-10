@@ -6,7 +6,7 @@
     <title>MongoDb-CRUD Example</title>
     <link rel="stylesheet" href="/styles.css" />
 </head>
-<body class="bg-gray-100">
+<body class="bg-blue-300">
     <div class="container mx-auto py-8">
         <h1 class="text-3xl font-bold mb-6 text-center">MongoDB CRUD Example</h1>
 
@@ -22,7 +22,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <!-- Form Section -->
-            <div class="p-6 bg-white rounded shadow-md">
+            <div class="p-6 bg-white rounded-lg shadow-md h-80 w-96">
                 {{#if edit_book_id}}
                 <h2 class="text-2xl font-semibold mb-4">Edit Book</h2>
                 <form action="/update_book/{{edit_book_id}}" method="post">
