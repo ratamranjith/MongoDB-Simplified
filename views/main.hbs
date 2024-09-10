@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MongoDb-CRUD Example</title>
+</head>
+<body>
+    <h1>MOngoDB</h1>
+    {{message}}
+{{#if edit_book_id}}
+<div class ='update'>
+        <form action="/update_book/{{edit_book_id}}" method="post" >
+        <input type="text" placeholder="bookname" name="title" value="{{edit_book.title}}" />
+        <br/>
+        <input type="text" placeholder="author" name="author" value="{{edit_book.author}}" />
+        <br/>
+        <input type="text" placeholder="Year" name="year" value="{{edit_book.year}}"/>
+        <button type="submit">Update</button>
+    </form>
+</div>
+<br/>
+{{else}}
+<div class='add'>
+    <form action="\addBook" method="post" >
+        <input type="text" placeholder="bookname" name="title" />
+        <br/>
+        <input type="text" placeholder="author" name="author" />
+        <br/>
+        <input type="text" placeholder="Year" name="year" />
+        <button type="submit">Add</button>
+    </form>
+</div>
+{{/if}}
+    <ul>
+        {{#each books}}
+        <li>{{this.title}} - {{this.author}} - {{this.year}} : <a href="\?edit_book_id={{this._id}}">Edit Book</a> &nbsp; &nbsp; <a href="\?delete_book_id={{this._id}}">Delete Book</a></li>
+        {{/each}}
+    </ul>
+</body>
+</html>
