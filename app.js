@@ -14,11 +14,11 @@ app.engine('hbs', exhbs.engine({
     }
 }))
 app.set('view engine', 'hbs')
-app.set('views', 'views')
+app.set('views', path.join(__dirname, 'views'));
 app.use(bodyparser.urlencoded({
     extended: false
 }))
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'src')));
 app.get('/', async (req, res) => {
     let message = "";
     let edit_book_id, edit_book;

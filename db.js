@@ -14,16 +14,13 @@ const getDatabase = async () => {
     }
 
     try {
-        const client = await mongoCl.connect(uri, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-        });
+        const client = await mongoCl.connect(uri);
         database = client.db('library');
         console.log('Database connected');
         return database;
     } catch (error) {
         console.error('Database connection failed:', error);
-        throw error; // Rethrow to ensure Vercel captures the error
+        throw error;
     }
 };
 
